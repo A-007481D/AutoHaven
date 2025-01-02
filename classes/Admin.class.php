@@ -42,5 +42,6 @@ class Admin extends Person {
             return false;
         }
     }
+    
 }
 ?>

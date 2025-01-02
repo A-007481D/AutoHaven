@@ -40,5 +40,30 @@ class Client extends Person {
             return false;
         }
     }
+
+    public function logout(): void {
+        session_start();
+        session_unset();
+        session_destroy();
+        }
+
+
+        public function getUserData() {
+            if (isset($_SESSION['userID'])) {
+                $stmt = $this->dbcon->prepare("SELECT * FROM users WHERE userID = :userID");
+                $stmt->bindParam(':userID', $_SESSION['userID']);
+                $stmt->execute();
+                return $stmt->fetch(PDO::FETCH_ASSOC);
+            }
+            return null;
+        }
+
+
+
+        public function getRecentClients() {
+            $stmt = $this->dbcon->prepare("SELECT userID, first_name, last_name, email, role FROM users ORDER BY userID DESC LIMIT 10");
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
 }
 ?>
