@@ -11,15 +11,15 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16 items-center">
                     <div class="flex items-center space-x-2">
-                        <a href="index.html"><span class="text-3xl font-bold text-blue-600">🚗</span>
+                        <a href="index.php"><span class="text-3xl font-bold text-blue-600">🚗</span>
                         <span class="text-2xl font-bold text-blue-800">AutoHaven</span></a>
                     </div>
                     <div class="hidden md:flex items-center space-x-8">
-                        <a href="../pages/index.html" class="text-gray-700 font-bold hover:text-blue-600 transition-colors">Home</a>
-                        <a href="../pages/fleet.html" class="text-gray-700 font-bold hover:text-blue-600 transition-colors">Our Fleet</a>
+                        <a href="../pages/index.php" class="text-gray-700 font-bold hover:text-blue-600 transition-colors">Home</a>
+                        <a href="../pages/fleet.php" class="text-gray-700 font-bold hover:text-blue-600 transition-colors">Our Fleet</a>
                         <a href="#" class="text-gray-700 font-bold hover:text-blue-600 transition-colors">About</a>
                         <button class="text-blue-500 font-bold bg-transparent px-4 py-2 border-solid border-2 border-blue-500 hover:text-white rounded-full hover:bg-blue-700 transition-all transform hover:scale-105 duration-200">
-                            <a href="../pages/login.html">Sign In</a>
+                            <a href="../pages/login.php">Sign In</a>
                         </button>
                     </div>
                 </div>

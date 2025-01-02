@@ -1,3 +1,9 @@
+<?php 
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,17 +29,17 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center space-x-2">
-                    <a href="../pages/index.html"><span class="text-3xl font-bold text-blue-600"></span>
+                    <a href="../pages/index.php"><span class="text-3xl font-bold text-blue-600"></span>
                     <span class="text-2xl font-bold text-blue-800">AutoHaven</span></a>
                     
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="../pages/index.html" class="text-gray-700 font-bold  hover:text-blue-600 transition-colors">Home</a>
-                    <a href="../pages/fleet.html" class="text-gray-700 font-bold  hover:text-blue-600 transition-colors">Our Fleet</a>
+                    <a href="../pages/index.php" class="text-gray-700 font-bold  hover:text-blue-600 transition-colors">Home</a>
+                    <a href="../pages/fleet.php" class="text-gray-700 font-bold  hover:text-blue-600 transition-colors">Our Fleet</a>
                     <a href="#" class="text-gray-700 font-bold  hover:text-blue-600 transition-colors">About</a>
                    
                      <button class="text-blue-500 font-bold bg-transparent px-4 py-2 border-solid border-2 border-blue-500 hover:text-white rounded-full hover:bg-blue-700 transition-all transform hover:scale-105 duration-200">
-                        <a href="../pages/login.html" class="">Sign In</a>
+                        <a href="../pages/login.php" class="">Sign In</a>
                     </button>
                 </div>
             </div>
@@ -58,7 +64,7 @@
                         Welcome Back
                     </h2>
                     
-                    <form method="POST" action="../processes/AuthProcess.php" class="space-y-6">
+                    <form method="POST" action="../Auth/auth.php" class="space-y-6">
                         <div>
                             <label class="block text-gray-700 text-sm font-semibold mb-2">Email</label>
                             <input type="email" name="email_login" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-blue-500 focus:bg-white focus:outline-none transition duration-200" placeholder="Enter your email">
@@ -78,7 +84,7 @@
                         </div>
                         
                         <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300 shadow-lg hover:shadow-blue-500/50">
-                            Sign In
+                            login
                         </button>
                     </form>
                     
@@ -111,21 +117,21 @@
                         Create Account
                     </h2>
                     
-                    <form method="POST" action="../processes/AuthProcess.php" class="space-y-6">
+                    <form method="POST" action="../Auth/auth.php" class="space-y-6">
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-gray-700 text-sm font-semibold mb-2">First Name</label>
-                                <input name="name" type="text" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-blue-500 focus:bg-white focus:outline-none transition duration-200" placeholder="First name">
+                                <input name="F_name" type="text" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-blue-500 focus:bg-white focus:outline-none transition duration-200" placeholder="First name">
                             </div>
                             <div>
                                 <label class="block text-gray-700 text-sm font-semibold mb-2">Last Name</label>
-                                <input name="prenom" type="text" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-blue-500 focus:bg-white focus:outline-none transition duration-200" placeholder="Last name">
+                                <input name="L_name" type="text" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-blue-500 focus:bg-white focus:outline-none transition duration-200" placeholder="Last name">
                             </div>
                         </div>
                         
                         <div>
                             <label class="block text-gray-700 text-sm font-semibold mb-2">Email</label>
-                            <input name="email" type="email" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-blue-500 focus:bg-white focus:outline-none transition duration-200" placeholder="Enter your email">
+                            <input name="email_reg" type="email" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-blue-500 focus:bg-white focus:outline-none transition duration-200" placeholder="Enter your email">
                         </div>
                         
                         <!-- <div>
@@ -140,7 +146,7 @@
                         
                         <div>
                             <label class="block text-gray-700 text-sm font-semibold mb-2">Confirm Password</label>
-                            <input name="password" type="password" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-blue-500 focus:bg-white focus:outline-none transition duration-200" placeholder="Confirm password">
+                            <input name="password_reg" type="password" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-blue-500 focus:bg-white focus:outline-none transition duration-200" placeholder="Confirm password">
                         </div>
                         
                         <label class="flex items-center space-x-2">
@@ -149,7 +155,7 @@
                         </label>
                         
                         <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300 shadow-lg hover:shadow-blue-500/50">
-                            Create Account
+                            register
                         </button>
                     </form>
 

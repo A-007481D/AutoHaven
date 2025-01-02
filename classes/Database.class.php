@@ -3,13 +3,13 @@
 
 
 class Database {
-    private $host = "localhost";
-    private $user = "root";
-    private $pwd = "abdelmalek";
-    private $dbname = "autohaven";
-    private $connection;
+    private string $host = "localhost";
+    private string $user = "root";
+    private string $pwd = "abdelmalek";
+    private string $dbname = "autohaven";
+    private PDO $connection;
 
-    public function __construct($host, $user,$pwd,$dbname)
+    public function __construct()
     {
         $dsn = "mysql:host=$this->host;dbname=$this->dbname;charset=utf8mb4";
         try {
@@ -22,7 +22,7 @@ class Database {
     }
 
 
-    public function getConnection()
+    public function getConnection(): PDO
     {
         return $this->connection;
     }
