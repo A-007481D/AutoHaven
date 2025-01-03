@@ -22,7 +22,7 @@ CREATE TABLE vehicles (
     vehicleID INT AUTO_INCREMENT PRIMARY KEY,
     model VARCHAR(255) NOT NULL,
     brand VARCHAR(255) NOT NULL,
-    categoryID INT,
+    categoryID INT, 
     price DECIMAL(10, 2) NOT NULL,
     description TEXT,
     image VARCHAR(255),

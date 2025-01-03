@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-lg font-medium text-gray-700">Manage</h2>
+        <button onclick="document.getElementById('addVehicleModal').classList.remove('hidden')" 
+    class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center">
+    <span class="mr-2">+</span> Add Vehicle
+</button>
+
+    </div>
+</div>
+
+
+<div id="addVehicleModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div class="bg-white rounded-lg w-full max-w-md p-6">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-lg font-medium">Add New Vehicle</h3>
+            <button onclick="document.getElementById('addVehicleModal').classList.add('hidden')" 
+                    class="text-gray-400 hover:text-gray-500">
+                ✕
+            </button>
+        </div>
+        <form method="POST" action="../processes/activityProcess.php" class="space-y-6">
+            <div class="space-y-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Activity Name</label>
+                <input type="text" name="activity_name" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2b62e3] focus:border-[#2b62e3] transition-colors duration-200" placeholder="Enter activity name" required >
+                <label class="block text-sm font-medium text-gray-700 mb-1">Activity picture</label>
+                <input type="text" name="activity_img" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2b62e3] focus:border-[#2b62e3] transition-colors duration-200" placeholder="Enter activity name" required>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                <textarea name="description" rows="4" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2b62e3] focus:border-[#2b62e3] transition-colors duration-200" placeholder="Describe the activity..." required></textarea>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Price</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <span class="text-gray-500">$</span>
+                        </div>
+                        <input type="number" name="price" class="w-full pl-8 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2b62e3] focus:border-[#2b62e3] transition-colors duration-200" placeholder="0.00" step="0.01" min="0" required>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Start Date</label>
+                    <input type="date" name="date_start" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2b62e3] focus:border-[#2b62e3] transition-colors duration-200" required >
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">End Date</label>
+                    <input type="date" name="date_fin" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2b62e3] focus:border-[#2b62e3] transition-colors duration-200" required >
+                </div>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Available Places</label>
+                <input type="number" name="available_places" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2b62e3] focus:border-[#2b62e3] transition-colors duration-200" placeholder="Enter number of spots" min="1" required >
+            </div>
+            <div class="flex justify-end space-x-3 pt-6 border-t">
+                <button type="button" onclick="closeModal()" class="px-6 py-2.5 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors duration-200">
+                    Cancel
+                </button>
+                <button type="submi" class="px-6 py-2.5 text-sm font-medium text-white bg-[#2b62e3] hover:bg-blue-600 rounded-lg transition-colors duration-200">
+                    Save Activity
+                </button>
+            </div>
+        </form>
+    </div>
+</div
+</body>
+</html>

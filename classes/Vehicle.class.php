@@ -11,9 +11,19 @@ class Vehicle {
     public function addVehicle($model, $brand, $categoryID, $price, $description, $image, $fuel, $seats, $doors, $features) {
         $stmt = $this->db->prepare(
             "INSERT INTO vehicles (model, brand, categoryID, price, description, image, fuel, seats, doors, features) 
-             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+             VALUES (:model, :brand, :categoryID, :price, :description, :image, :fuel, :seats, :doors, :features)"
         );
-        return $stmt->execute([$model, $brand, $categoryID, $price, $description, $image, $fuel, $seats, $doors, json_encode($features)]);
+        $stmt->bindParam(':model', $model);
+        $stmt->bindParam(':brand', $brand);
+        $stmt->bindParam(':categoryID', $categoryID);
+        $stmt->bindParam(':price', $price);
+        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':image', $image);
+        $stmt->bindParam(':fuel', $fuel);
+        $stmt->bindParam(':seats', $seats);
+        $stmt->bindParam(':doors', $doors);
+        $stmt->bindParam(':features', $features);
+        return $stmt->execute();
     }
 
     public function editVehicle($vehicleID, $model, $brand, $categoryID, $price, $description, $image, $fuel, $seats, $doors, $features) {
@@ -45,4 +55,3 @@ class Vehicle {
 
 
 
-?>

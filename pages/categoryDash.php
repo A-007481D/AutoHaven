@@ -9,7 +9,7 @@ require_once '../classes/Database.class.php';
 require_once '../classes/Category.class.php';
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    header("Location: ../pages/fleet.php");
+    header("Location: ../pages/login.php");
     exit;
 }
 
@@ -43,15 +43,15 @@ $categories = $category->getAllCategories();
                         <span class="mr-3">🏠</span>
                         Home
                     </a>
-                    <a href="reservations.php" class="flex items-center px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">
+                    <a href="../pages/reservationsDash.php" class="flex items-center px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">
                         <span class="mr-3">📋</span>
                         Reservations
                     </a>
-                    <a href="vehicles.php" class="flex items-center px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">
+                    <a href="../pages/vehiclesDash.php" class="flex items-center px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">
                         <span class="mr-3">🚗</span>
                         Vehicles
                     </a>
-                    <a href="categories.php" class="flex items-center px-4 py-2 bg-blue-50 text-blue-600 rounded-lg transition-colors">
+                    <a href="../pages/categoriesDash.php" class="flex items-center px-4 py-2 bg-blue-50 text-blue-600 rounded-lg transition-colors">
                         <span class="mr-3">📁</span>
                         Categories
                     </a>
@@ -59,7 +59,7 @@ $categories = $category->getAllCategories();
                         <span class="mr-3">👥</span>
                         Manage Users
                     </a>
-                    <a href="reviews.php" class="flex items-center px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">
+                    <a href="../pages/reviewsDash.php" class="flex items-center px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">
                         <span class="mr-3">💬</span>
                         Reviews
                     </a>
@@ -89,12 +89,10 @@ $categories = $category->getAllCategories();
                                 Add Vehicle
                             </a> -->
 
-
-                            <form action="../processes/add_category.php" method="POST">
-
-                                <input type="text" name="categoryName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="John" required />
-
-                                <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg">
+                            <form action="../processes/add_category.php" method="POST" class="space-y-4">
+                                <label for="categoryName" class="block text-sm font-medium text-gray-700">Add New Category</label>
+                                <input type="text" name="categoryName" id="categoryName" class="block w-full p-3 text-sm text-gray-700 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-50" placeholder="Enter category name" required />
+                                <button type="submit" class="w-full py-2 px-4 text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-md transition">
                                     Add Category
                                 </button>
                             </form>
@@ -119,27 +117,30 @@ $categories = $category->getAllCategories();
                             </thead>
                             <tbody>
                                 <?php
-                                $category = $category->getALlCategories();
                                 foreach ($categories as $category) { ?>
                                     <tr>
                                         <td class="p-4 border-b"><?php echo $category['categoryID']; ?></td>
                                         <td class="p-4 border-b">
 
+                                            
+
                                             <form action="../processes/edit_category.php" method="POST">
-                                                <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                                                <div class="relative">
+                                                <div class="relative space-y-2">
                                                     <input type="hidden" name="categoryID" value="<?php echo $category['categoryID']; ?>">
                                                     <input type="hidden" name="type" value="categoryName">
-                                                    <input readonly name="categoryName" value="<?php echo $category['catName']; ?>" type="text" id="catName<?php echo $category['categoryID']; ?>" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500" placeholder="Search" required />
-                                                    <button type="submit" style="display:none;" id="btn-<?php echo $category['categoryID'];?>" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 ">Submit</button>
+                                                    <input readonly name="categoryName" value="<?php echo $category['catName']; ?>" type="text" id="catName<?php echo $category['categoryID']; ?>" class="block w-full p-3 text-sm text-gray-700 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-gray-50" placeholder="Enter category name" required />
+                                                    <button type="submit" id="btn-<?php echo $category['categoryID']; ?>" style="display:none;" class="absolute top-1/2 -translate-y-1/2 right-2 text-white bg-green-600 hover:bg-green-700 rounded-lg py-1 px-3 shadow-md transition">
+                                                        Save
+                                                    </button>
                                                 </div>
                                             </form>
+
 
                                         </td>
 
                                         <td class="p-4 border-b"><?php echo $category['availability']; ?></td>
                                         <td class="p-4 border-b">
-                                        <button type="button" onclick="editCatName(<?php echo $category['categoryID']; ?>)" class="text-white hover:text-white bg-green-500 rounded-md p-1">Edit</button>
+                                            <button type="button" onclick="editCatName(<?php echo $category['categoryID']; ?>)" class="text-white hover:text-white bg-green-500 rounded-md p-1">Edit</button>
 
                                             <?php if ($category['availability'] === 'INACTIVE') { ?>
                                                 <form method="POST" action="../processes/edit_category.php">
