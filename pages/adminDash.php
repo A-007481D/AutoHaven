@@ -9,8 +9,8 @@ require_once '../classes/Database.class.php';
 require_once '../classes/Person.class.php';
 require_once '../classes/Client.class.php';
 
-if (!isset($_SESSION['role']) || empty($_SESSION['role'])) {
-    header("Location: ../pages/login.php");
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header("Location: ../pages/fleet.php");
     exit;
 }
 

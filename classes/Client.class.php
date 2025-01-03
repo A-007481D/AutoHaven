@@ -1,4 +1,5 @@
 <?php
+
 require_once '.././classes/Person.class.php';
 
 
@@ -30,7 +31,8 @@ class Client extends Person {
                 session_start();
                 $_SESSION['userID'] = $user['userID'];
                 $_SESSION['role'] = $user['role'];
-                header("Location: ../pages/clientProfile.php");
+                $_SESSION['name'] = $user['first_name'] . " " . $user['last_name'];
+                header("Location: ../pages/index.php");
                 return true;
             }
 

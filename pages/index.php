@@ -1,29 +1,51 @@
+<?php 
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AutoHaven- Premium Car Rentals</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gray-50">
 
-<nav class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center space-x-2">
                     <a href="../pages/index.php"><span class="text-3xl font-bold text-blue-600"></span>
-                    <span class="text-2xl font-bold text-blue-800">AutoHaven</span></a>
-                    
+                        <span class="text-2xl font-bold text-blue-800">AutoHaven</span></a>
+
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="../pages/index.php" class="text-gray-700 font-bold  hover:text-blue-600 transition-colors">Home</a>
                     <a href="../pages/fleet.php" class="text-gray-700 font-bold  hover:text-blue-600 transition-colors">Our Fleet</a>
                     <a href="#" class="text-gray-700 font-bold  hover:text-blue-600 transition-colors">About</a>
-                   
-                     <button class="text-blue-500 font-bold bg-transparent px-4 py-2 border-solid border-2 border-blue-500 hover:text-white rounded-full hover:bg-blue-700 transition-all transform hover:scale-105 duration-200">
-                        <a href="../pages/login.php" class="">Sign In</a>
-                    </button>
+                    <?php 
+                    if (isset($_SESSION['name'])) {
+
+
+                    ?>
+                        <div class="text-blue-500 font-bold bg-transparent">
+                            Welcome, 
+                            <?php echo $_SESSION['name']; ?>
+                    </div> 
+                    <button class="text-blue-500 font-bold bg-transparent px-4 py-2 border-solid border-2 border-blue-500 hover:text-white rounded-full hover:bg-blue-700 transition-all transform hover:scale-105 duration-200">
+                            <a href="../Auth/logout.php" class="">Logout</a>
+                        </button>
+                    <?php } else {
+
+                    ?>
+                        <button class="text-blue-500 font-bold bg-transparent px-4 py-2 border-solid border-2 border-blue-500 hover:text-white rounded-full hover:bg-blue-700 transition-all transform hover:scale-105 duration-200">
+                            <a href="../pages/login.php" class="">Sign In</a>
+                        </button>
+                    <?php } ?>
 
                 </div>
             </div>
@@ -190,4 +212,5 @@
         </div>
     </footer>
 </body>
+
 </html>
