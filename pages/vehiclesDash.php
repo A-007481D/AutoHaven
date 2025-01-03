@@ -6,8 +6,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once '../classes/Database.class.php';
-require_once '../classes/Person.class.php';
-require_once '../classes/Client.class.php';
+require_once '../classes/Vehicle.class.php';
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../pages/fleet.php");
@@ -16,9 +15,9 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 
 $db = new Database();
 $dbcon = $db->getConnection();
-$client = new  Client($dbcon); 
+$vehicle = new  Vehicle($dbcon);
 
-$recentClients = $client->getRecentClients();
+$recentVehicles = $vehicle->getAllVehicles();
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +46,7 @@ $recentClients = $client->getRecentClients();
                         Reservations
                     </a>
                     <a href="../pages/vehiclesDash.php" class="flex items-center px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">
-                        <span class="mr-3">🚗</span>
+                    <span class="mr-3">🚗</span>
                         Vehicles
                     </a>
                     <a href="../pages/categoryDash.php" class="flex items-center px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">
@@ -87,9 +86,9 @@ $recentClients = $client->getRecentClients();
                             <a href="add_vehicle.php" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg">
                                 Add Vehicle
                             </a>
-                            <a href="add_category.php" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg">
+                            <!-- <a href="add_category.php" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg">
                                 Add Category
-                            </a>
+                            </a> -->
                         </div>
                     </div>
                 </div>
@@ -112,24 +111,24 @@ $recentClients = $client->getRecentClients();
                             </thead>
                             <tbody>
                                 <?php 
-                                    $recentClients = $client->getRecentClients(); 
-                                    foreach ($recentClients as $client) { ?>
+                                    $recentVehicles = $vehicle->getRecentClients(); 
+                                    foreach ($recentVehicles as $vehicle) { ?>
                                         <tr>
-                                            <td class="p-4 border-b"><?php echo $client['userID']; ?></td>
-                                            <td class="p-4 border-b"><?php echo $client['first_name']; ?></td>
-                                            <td class="p-4 border-b"><?php echo $client['last_name']; ?></td>
-                                            <td class="p-4 border-b"><?php echo $client['email']; ?></td>
-                                            <td class="p-4 border-b"><?php echo $client['role']; ?></td>
+                                            <td class="p-4 border-b"><?php echo $vehicle['userID']; ?></td>
+                                            <td class="p-4 border-b"><?php echo $vehicle['first_name']; ?></td>
+                                            <td class="p-4 border-b"><?php echo $vehicle['last_name']; ?></td>
+                                            <td class="p-4 border-b"><?php echo $vehicle['email']; ?></td>
+                                            <td class="p-4 border-b"><?php echo $vehicle['role']; ?></td>
                                             <td class="p-4 border-b">
-                                                <?php if ($client['role'] === 'client') { ?>
+                                                <?php if ($vehicle['role'] === 'client') { ?>
                                                     <form method="POST" action="">
-                                                        <input type="hidden" name="userID" value="<?php echo $client['userID']; ?>"> 
+                                                        <input type="hidden" name="userID" value="<?php echo $vehicle['userID']; ?>"> 
                                                         <button type="submit" class="text-white hover:text-white bg-green-500 rounded-md p-1">Promote</button>
                                                     </form>
                                                 <?php } ?>
-                                                <?php if ($client['role'] === 'admin') { ?>
+                                                <?php if ($vehicle['role'] === 'admin') { ?>
                                                     <form method="POST" action="">
-                                                        <input type="hidden" name="userID" value="<?php echo $client['userID']; ?>"> 
+                                                        <input type="hidden" name="userID" value="<?php echo $vehicle['userID']; ?>"> 
                                                         <button type="submit" class="text-white bg-red-500 rounded-md p-1.5">Demote</button>
                                                     </form>
                                                 <?php } ?>

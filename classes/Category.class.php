@@ -7,15 +7,23 @@ class Category {
     public function __construct($dbcon) {
         $this->db = $dbcon;
     }
-
+    
     public function addCategory($catName) {
-        $stmt = $this->db->prepare("INSERT INTO categories (catName) VALUES (?)");
-        return $stmt->execute([$catName]);
+        $stmt = $this->db->prepare("INSERT INTO categories (catName) VALUES (:catName)");
+        $stmt->bindParam(':catName', $catName);
+        return $stmt->execute();
     }
 
     public function editCategory($categoryID, $catName) {
         $stmt = $this->db->prepare("UPDATE categories SET catName = ? WHERE categoryID = ?");
         return $stmt->execute([$catName, $categoryID]);
+    }
+
+    public function editCategoryAvailability($categoryID, $availability) {
+        $stmt = $this->db->prepare("UPDATE categories SET availability = :availability WHERE categoryID = :categoryID");
+        $stmt->bindParam(':availability', $availability);
+        $stmt->bindParam(':categoryID', $categoryID);
+        return $stmt->execute();
     }
 
     public function deleteCategory($categoryID) {
