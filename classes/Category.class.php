@@ -15,8 +15,10 @@ class Category {
     }
 
     public function editCategory($categoryID, $catName) {
-        $stmt = $this->db->prepare("UPDATE categories SET catName = ? WHERE categoryID = ?");
-        return $stmt->execute([$catName, $categoryID]);
+        $stmt = $this->db->prepare("UPDATE categories SET catName = :categoryName WHERE categoryID = :categoryID");
+        $stmt->bindParam(':categoryName', $catName);
+        $stmt->bindParam(':categoryID', $categoryID);
+        return $stmt->execute();
     }
 
     public function editCategoryAvailability($categoryID, $availability) {

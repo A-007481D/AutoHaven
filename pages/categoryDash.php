@@ -92,9 +92,9 @@ $categories = $category->getAllCategories();
 
                             <form action="../processes/add_category.php" method="POST">
 
-                            <input type="text" name="categoryName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="John" required />
-                            
-                            <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg">
+                                <input type="text" name="categoryName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="John" required />
+
+                                <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg">
                                     Add Category
                                 </button>
                             </form>
@@ -123,9 +123,24 @@ $categories = $category->getAllCategories();
                                 foreach ($categories as $category) { ?>
                                     <tr>
                                         <td class="p-4 border-b"><?php echo $category['categoryID']; ?></td>
-                                        <td class="p-4 border-b"><?php echo $category['catName']; ?></td>
+                                        <td class="p-4 border-b">
+
+                                            <form action="../processes/edit_category.php" method="POST">
+                                                <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                                                <div class="relative">
+                                                    <input type="hidden" name="categoryID" value="<?php echo $category['categoryID']; ?>">
+                                                    <input type="hidden" name="type" value="categoryName">
+                                                    <input readonly name="categoryName" value="<?php echo $category['catName']; ?>" type="text" id="catName<?php echo $category['categoryID']; ?>" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500" placeholder="Search" required />
+                                                    <button type="submit" style="display:none;" id="btn-<?php echo $category['categoryID'];?>" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 ">Submit</button>
+                                                </div>
+                                            </form>
+
+                                        </td>
+
                                         <td class="p-4 border-b"><?php echo $category['availability']; ?></td>
                                         <td class="p-4 border-b">
+                                        <button type="button" onclick="editCatName(<?php echo $category['categoryID']; ?>)" class="text-white hover:text-white bg-green-500 rounded-md p-1">Edit</button>
+
                                             <?php if ($category['availability'] === 'INACTIVE') { ?>
                                                 <form method="POST" action="../processes/edit_category.php">
                                                     <input type="hidden" name="categoryID" value="<?php echo $category['categoryID']; ?>">
@@ -153,6 +168,7 @@ $categories = $category->getAllCategories();
     </div>
     </main>
     </div>
+    <script src="../JS/editCategory.js"></script>
 </body>
 
 </html>

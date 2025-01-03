@@ -23,7 +23,7 @@ try {
 
     }
     if ($_POST['type'] === 'categoryName') {
-        $categories = $category->editCategory($_POST['categoryID'], $_POST['availability']);
+        $categories = $category->editCategory($_POST['categoryID'], $_POST['categoryName']);
 
     }
     header("Location: ../pages/categoryDash.php");
