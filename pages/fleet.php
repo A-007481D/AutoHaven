@@ -4,7 +4,19 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+require_once '../classes/Database.class.php';
+require_once '../classes/Category.class.php';
+require_once '../classes/Vehicle.class.php';
+
+$db = new Database();
+$dbcon = $db->getConnection();
+$vehicle = new Vehicle($dbcon);
+$category = new Category($dbcon);
+$allVehicles = $vehicle->getAllVehicles();
+$allActiveCategories = $category->getAllActiveCategories();
+
 ?>
+
 
     
     <!DOCTYPE html>
@@ -72,22 +84,22 @@ error_reporting(E_ALL);
         <!-- search -->
         <div class="max-w-7xl mx-auto px-4 -mt-8 relative z-10">
             <div class="bg-white rounded-2xl shadow-xl p-6">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Vehicle Type</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Vehicle Category</label>
                         <select class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                            <option>All Vehicles</option>
-                            <option>Luxury Sedans</option>
-                            <option>SUVs</option>
-                            <option>Sports Cars</option>
-                            <option>Electric Vehicles</option>
+                            <option>All Categories</option>
+                            <?php foreach($allActiveCategories as $category) {
+                                     ?> 
+                                     <option value="<?= $category['categoryID'] ?>"><?= $category['catName'] ?></option>
+                                    <?php } ?>
                         </select>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Pick-up Date</label>
-                        <input type="date" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Search for a vehicle</label>
+                        <input type="search" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="#keyword">
                     </div>
-                    <div>
+                    <!-- <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Duration</label>
                         <select class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                             <option>1 Day</option>
@@ -95,7 +107,7 @@ error_reporting(E_ALL);
                             <option>4-7 Days</option>
                             <option>7+ Days</option>
                         </select>
-                    </div>
+                    </div> -->
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">&nbsp;</label>
                         <button class="w-full bg-blue-600 text-white px-6 py-2.5 rounded-xl hover:bg-blue-700 transition-colors">
@@ -107,7 +119,7 @@ error_reporting(E_ALL);
         </div>
         
         <!-- categories -->
-        <section class="py-16 bg-gray-100">
+        <!-- <section class="py-16 bg-gray-100">
             <div class="max-w-7xl mx-auto px-4">
                 <h2 class="text-3xl font-bold mb-8">Browse by Category</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6" id="categories">
@@ -143,7 +155,7 @@ error_reporting(E_ALL);
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- Available Cars -->
         <section class="py-16" id="cars-section">

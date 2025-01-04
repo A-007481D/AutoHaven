@@ -19,12 +19,69 @@
             }
         }, 
         
+        
     ],
     sports: [
+        {
+            id: 'bmw-800',
+            name: 'BMW 8 Series',
+            category: 'Sports',
+            price: 199,
+            image: '../img/car1.jpeg',
+            fuel: 'Petrol',
+            seats: 5,
+            doors: 4,
+            description: 'Ultimate luxury sedan with advanced features and premium comfort.',
+            features: ['Leather seats', 'Panoramic roof', 'Advanced driver assistance', 'Premium sound system'  ],
+            specs: {
+                engine: '3.0L Twin-Turbo',
+                power: '335 hp',
+                transmission: '8-speed automatic',
+                acceleration: '0-60 mph in 5.3s'
+            }
+        }, 
+
+        
     ],
     electric: [
+        {
+            id: 'bmw-800',
+            name: 'BMW 8 Series',
+            category: 'Electrics',
+            price: 199,
+            image: '../img/car1.jpeg',
+            fuel: 'Petrol',
+            seats: 5,
+            doors: 4,
+            description: 'Ultimate luxury sedan with advanced features and premium comfort.',
+            features: ['Leather seats', 'Panoramic roof', 'Advanced driver assistance', 'Premium sound system'  ],
+            specs: {
+                engine: '3.0L Twin-Turbo',
+                power: '335 hp',
+                transmission: '8-speed automatic',
+                acceleration: '0-60 mph in 5.3s'
+            }
+        },
     ],
     suv: [
+        {
+            id: 'bmw-800',
+            name: 'BMW 8 Series',
+            category: 'SUV',
+            price: 199,
+            image: '../img/car1.jpeg',
+            fuel: 'Petrol',
+            seats: 5,
+            doors: 4,
+            description: 'Ultimate luxury sedan with advanced features and premium comfort.',
+            features: ['Leather seats', 'Panoramic roof', 'Advanced driver assistance', 'Premium sound system'  ],
+            specs: {
+                engine: '3.0L Twin-Turbo',
+                power: '335 hp',
+                transmission: '8-speed automatic',
+                acceleration: '0-60 mph in 5.3s'
+            }
+        },
     ]
 };
 

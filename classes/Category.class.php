@@ -38,4 +38,10 @@ class Category {
         $stmt = $this->db->query("SELECT * FROM categories");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    // CLIENT METHODES
+    public function getAllActiveCategories() {
+        $stmt = $this->db->query("SELECT * FROM categories WHERE availability = 'ACTIVE'");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

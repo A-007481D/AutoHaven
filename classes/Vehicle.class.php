@@ -70,6 +70,7 @@ class Vehicle {
         $stmt = $this->db->query("SELECT * FROM vehicles");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
     public function getVehicle($vehicleID) {
         $stmt = $this->db->query("SELECT * FROM vehicles WHERE vehicleID = $vehicleID");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -77,6 +78,12 @@ class Vehicle {
     public function getVehiclesByCategory($categoryID) {
         $stmt = $this->db->prepare("SELECT * FROM vehicles WHERE categoryID = ?");
         $stmt->execute([$categoryID]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+   // client methodes 
+    public function getAllActiveVehicles() {
+        $stmt = $this->db->query("SELECT * FROM vehicles WHERE availability = 'ACTIVE' LIMIT 3");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
