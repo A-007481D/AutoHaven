@@ -119,7 +119,7 @@ $allCategories = $category->getAllCategories();
                                         <td class="p-4"><?php echo $vehicle['features']; ?></td>
                                         <td class="p-4"><?php echo $vehicle['availability']; ?></td>
                                         <td class="p-4 space-x-2">
-                                            <button class="px-2 py-1 bg-blue-500 text-white rounded-lg text-sm">Edit</button>
+                                            <button type="button" onclick="editVehicle(<?php echo $vehicle['vehicleID'] ?>)" class="px-2 py-1 bg-blue-500 text-white rounded-lg text-sm">Edit</button>
                                             <form method="POST" action="../processes/edit_vehicle.php" class="inline">
                                                 <input type="hidden" name="vehicleID" value="<?php echo $vehicle['vehicleID']; ?>">
                                                 <button type="submit" class="px-2 py-1 text-white rounded-lg text-sm <?php echo $vehicle['availability'] === 'ACTIVE' ? 'bg-red-500' : 'bg-green-500'; ?>">
@@ -239,7 +239,7 @@ $allCategories = $category->getAllCategories();
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
-                        <select id="cateoryID" name="categoryID" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2b62e3] focus:border-[#2b62e3] transition-colors duration-200" required>
+                        <select id="categoryID" name="categoryID" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2b62e3] focus:border-[#2b62e3] transition-colors duration-200" required>
                             <option value="" disabled selected>Select a category</option>
                                     <?php foreach($allCategories as $category) {
                                      ?> 
@@ -284,7 +284,7 @@ $allCategories = $category->getAllCategories();
         </div>
     </div>
 
-
+<script src="../JS/getVehicle.js"></script>
 </body>
 
 </html>
