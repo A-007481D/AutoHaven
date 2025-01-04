@@ -1,0 +1,15 @@
+{
+    "name": "malik/autohaven",
+    "authors": [
+        {
+            "name": "A-007481D",
+            "email": "labidabdelmalek@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Autohaven\\": "classes/"
+        }
+    }
+}

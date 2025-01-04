@@ -67,7 +67,7 @@ $categories = $category->getAllCategories();
             </nav>
 
             <div class="absolute bottom-0 w-64 p-4 border-t border-gray-200">
-                <form method="POST" action="../processes/logout.php">
+                <form method="POST" action="../Auth/logout.php">
                     <button class="w-full px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors">
                         Logout
                     </button>
@@ -158,6 +158,10 @@ $categories = $category->getAllCategories();
                                                     <button type="submit" class="text-white bg-red-500 rounded-md p-1.5">Deactivate</button>
                                                 </form>
                                             <?php } ?>
+                                            <form method="POST" action="../processes/delete_category.php">
+                                                    <input type="hidden" name="categoryID" value="<?php echo $category['categoryID']; ?>">
+                                                    <button type="submit" class="text-white hover:text-white bg-red-500 rounded-md p-1">Delete</button>
+                                                </form>
                                         </td>
                                     </tr>
                                 <?php } ?>

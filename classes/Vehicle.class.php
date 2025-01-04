@@ -27,16 +27,43 @@ class Vehicle {
     }
 
     public function editVehicle($vehicleID, $model, $brand, $categoryID, $price, $description, $image, $fuel, $seats, $doors, $features) {
+        if ($image !== NULL) {
+            $img  = ", image = :image";
+        } else {
+            $img = "";
+        }
         $stmt = $this->db->prepare(
-            "UPDATE vehicles SET model = ?, brand = ?, categoryID = ?, price = ?, description = ?, image = ?, fuel = ?, seats = ?, doors = ?, features = ? 
-             WHERE vehicleID = ?"
-        );
-        return $stmt->execute([$model, $brand, $categoryID, $price, $description, $image, $fuel, $seats, $doors, json_encode($features), $vehicleID]);
+            "UPDATE vehicles SET model = :model, brand = :brand, categoryID = :categoryID, price = :price,  description = :description $img, fuel = :fuel, seats = :seats, doors = :doors, features = :features WHERE vehicleID = :vehicleID"
+ );
+        $stmt->bindParam(':vehicleID', $vehicleID);
+        $stmt->bindParam(':model', $model);
+        $stmt->bindParam(':brand', $brand);
+        $stmt->bindParam(':categoryID', $categoryID);
+        $stmt->bindParam(':price', $price);
+        $stmt->bindParam(':description', $description);
+        if($image !== NULL ) {
+            $stmt->bindParam(':image', $image);
+        }
+        $stmt->bindParam(':fuel', $fuel);
+        $stmt->bindParam(':seats', $seats);
+        $stmt->bindParam(':doors', $doors);
+        $stmt->bindParam(':features', $features);
+        return $stmt->execute();
     }
 
+
+    public function editVehicleAvailability($vehicleID, $availability) {
+        $stmt = $this->db->prepare("UPDATE vehicles SET availability = :availability WHERE vehicleID = :vehicleID");
+        $stmt->bindParam(':availability', $availability);
+        $stmt->bindParam(':vehicleID', $vehicleID);
+        return $stmt->execute();
+    }
+
+
     public function deleteVehicle($vehicleID) {
-        $stmt = $this->db->prepare("DELETE FROM vehicles WHERE vehicleID = ?");
-        return $stmt->execute([$vehicleID]);
+        $stmt = $this->db->prepare("DELETE FROM vehicles WHERE vehicleID = :vehicleID");
+        $stmt->bindParam(':vehicleID', $vehicleID);
+        return $stmt->execute();
     }
 
     public function getAllVehicles() {

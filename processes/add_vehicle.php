@@ -36,7 +36,7 @@ if (move_uploaded_file($fileTmpPath, $destPath)) {
         $_POST['fuel'], 
         $_POST['seats'], 
         $_POST['doors'], 
-        json_encode($_POST['features'])); 
+        $_POST['features']); 
         header("Location: ../pages/vehiclesDash.php");
     } catch (PDOException  $ex) {
         die("Add vehicle failed: " . $ex->getMessage());

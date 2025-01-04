@@ -12,7 +12,7 @@ function editVehicle(id) {
                     console.log(data[0]['vehicleID']);
 
                     let vehicle = data[0];
-                    // document.getElementById('vehicleID').value=vehicle['vehicleID'];
+                     document.getElementById('vehicleID').value=vehicle['vehicleID'];
                      document.getElementById('model').value=vehicle['model'];
                      document.getElementById('brand').value=vehicle['brand'];
                      document.getElementById('description').value=vehicle['description'];
@@ -22,8 +22,7 @@ function editVehicle(id) {
                      document.getElementById('seats').value=vehicle['seats'];
                      document.getElementById('doors').value=vehicle['doors'];
                      document.getElementById('categoryID').selectedIndex=vehicle['categoryID'];
-
-                    //  document.getElementById('features').value=vehicle['features'];
+                     document.getElementById('features').value=vehicle['features'];
 
 
                     document.getElementById('editVehicleModal').classList.remove('hidden');

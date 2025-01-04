@@ -29,8 +29,9 @@ class Category {
     }
 
     public function deleteCategory($categoryID) {
-        $stmt = $this->db->prepare("DELETE FROM categories WHERE categoryID = ?");
-        return $stmt->execute([$categoryID]);
+        $stmt = $this->db->prepare("DELETE FROM categories WHERE categoryID = :categoryID");
+        $stmt->bindParam(':categoryID', $categoryID);
+        return $stmt->execute();
     }
 
     public function getAllCategories() {

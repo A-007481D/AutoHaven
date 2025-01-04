@@ -62,8 +62,8 @@ $allCategories = $category->getAllCategories();
                 </div>
             </nav>
             <div class="absolute bottom-0 w-64 p-4 border-t border-gray-200">
-                <form method="POST" action="../processes/logout.php">
-                    <button class="w-full px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors">
+                <form method="POST" action="../Auth/logout.php">
+            <button class="w-full px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors">
                         Logout
                     </button>
                 </form>
@@ -120,12 +120,26 @@ $allCategories = $category->getAllCategories();
                                         <td class="p-4"><?php echo $vehicle['availability']; ?></td>
                                         <td class="p-4 space-x-2">
                                             <button type="button" onclick="editVehicle(<?php echo $vehicle['vehicleID'] ?>)" class="px-2 py-1 bg-blue-500 text-white rounded-lg text-sm">Edit</button>
-                                            <form method="POST" action="../processes/edit_vehicle.php" class="inline">
-                                                <input type="hidden" name="vehicleID" value="<?php echo $vehicle['vehicleID']; ?>">
-                                                <button type="submit" class="px-2 py-1 text-white rounded-lg text-sm <?php echo $vehicle['availability'] === 'ACTIVE' ? 'bg-red-500' : 'bg-green-500'; ?>">
-                                                    <?php echo $vehicle['availability'] === 'ACTIVE' ? 'Deactivate' : 'Activate'; ?>
-                                                </button>
-                                            </form>
+                                            <?php if ($vehicle['availability'] === 'INACTIVE') { ?>
+                                                <form method="POST" action="../processes/edit_vehicle.php">
+                                                    <input type="hidden" name="vehicleID" value="<?php echo $vehicle['vehicleID']; ?>">
+                                                    <input type="hidden" name="availability" value="ACTIVE">
+                                                    <input type="hidden" name="type" value="availability">
+                                                    <button type="submit" class="text-white hover:text-white bg-green-500 rounded-md p-1">Activate</button>
+                                                </form>
+                                            <?php } ?>
+                                            <?php if ($vehicle['availability'] === 'ACTIVE') { ?>
+                                                <form method="POST" action="../processes/edit_vehicle.php">
+                                                    <input type="hidden" name="vehicleID" value="<?php echo $vehicle['vehicleID']; ?>">
+                                                    <input type="hidden" name="availability" value="INACTIVE">
+                                                    <input type="hidden" name="type" value="availability">
+                                                    <button type="submit" class="text-white bg-red-500 rounded-md p-1.5">Deactivate</button>
+                                                </form>
+                                            <?php } ?>
+                                            <form method="POST" action="../processes/delete_vehicle.php">
+                                                    <input type="hidden" name="vehicleID" value="<?php echo $vehicle['vehicleID']; ?>">
+                                                    <button type="submit" class="text-white hover:text-white bg-red-500 rounded-md p-1">Delete</button>
+                                                </form>
                                         </td>
                                     </tr>
                                 <?php } ?>
@@ -218,9 +232,10 @@ $allCategories = $category->getAllCategories();
                 <h3 class="text-lg font-medium">Edit Vehicle</h3>
                 <button onclick="document.getElementById('editVehicleModal').classList.add('hidden')" class="text-gray-400 hover:text-gray-500">✕</button>
             </div>
-            <form method="POST" action="../processes/add_vehicle.php" class="space-y-6" enctype="multipart/form-data">
+            <form method="POST" action="../processes/edit_vehicle.php" class="space-y-6" enctype="multipart/form-data">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
+                        <input type="hidden" name="vehicleID" id="vehicleID">
                         <label class="block text-sm font-medium text-gray-700 mb-1">Vehicle Brand</label>
                         <input id="brand" type="text" name="brand" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2b62e3] focus:border-[#2b62e3] transition-colors duration-200" placeholder="Enter Vehicle brand" required>
                     </div>
@@ -251,7 +266,7 @@ $allCategories = $category->getAllCategories();
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Vehicle Image</label>
-                        <input type="file" id="image" name="image" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2b62e3] focus:border-[#2b62e3] transition-colors duration-200" required>
+                        <input type="file" id="image" name="image" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2b62e3] focus:border-[#2b62e3] transition-colors duration-200">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
