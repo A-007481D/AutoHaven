@@ -20,9 +20,4 @@ $category = new  Category($dbcon);
 $categories = $category->deleteCategory($_POST['categoryID']);
 header("Location: ../pages/categoryDash.php");
 
-    
-
-
-
-
 ?>

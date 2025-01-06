@@ -2,7 +2,7 @@
     require_once '.././classes/Database.class.php';
 
 class Vehicle {
-    private $db;
+    private PDO $db;
 
     public function __construct($dbConnection) {
         $this->db = $dbConnection;
@@ -82,8 +82,11 @@ class Vehicle {
     }
 
    // client methodes 
-    public function getAllActiveVehicles() {
-        $stmt = $this->db->query("SELECT * FROM vehicles WHERE availability = 'ACTIVE' LIMIT 3");
+    public function getActiveVehicles($limit, $offset) {
+        $stmt = $this->db->prepare("SELECT v.* FROM vehicles v INNER JOIN categories c ON v.categoryID = c.categoryID WHERE v.availability = 'ACTIVE' AND c.availability = 'ACTIVE' LIMIT :limit OFFSET :offset");
+        $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

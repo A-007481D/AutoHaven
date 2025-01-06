@@ -15,9 +15,8 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 }
 
 $db = new Database();
-$dbcon = $db->getConnection();
-$vehicle = new Vehicle($dbcon);
-$category = new Category($dbcon);
+$vehicle = new Vehicle($db->getConnection());
+$category = new Category($db->getConnection());
 $allVehicles = $vehicle->getAllVehicles();
 $allCategories = $category->getAllCategories();
 

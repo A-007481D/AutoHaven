@@ -13,9 +13,17 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     exit;
 }
 
+if (isset($_SESSION['success'])) {
+    echo "<script>alert('" . $_SESSION['success'] . "');</script>";
+    unset($_SESSION['success']);
+}
+if (isset($_SESSION['error'])) {
+    echo "<script>alert('" . $_SESSION['error'] . "');</script>";
+    unset($_SESSION['error']);
+}
+
 $db = new Database();
-$dbcon = $db->getConnection();
-$category = new  Category($dbcon);
+$category = new  Category($db->getConnection());
 
 $categories = $category->getAllCategories();
 ?>
@@ -121,9 +129,6 @@ $categories = $category->getAllCategories();
                                     <tr>
                                         <td class="p-4 border-b"><?php echo $category['categoryID']; ?></td>
                                         <td class="p-4 border-b">
-
-                                            
-
                                             <form action="../processes/edit_category.php" method="POST">
                                                 <div class="relative space-y-2">
                                                     <input type="hidden" name="categoryID" value="<?php echo $category['categoryID']; ?>">
@@ -158,10 +163,10 @@ $categories = $category->getAllCategories();
                                                     <button type="submit" class="text-white bg-red-500 rounded-md p-1.5">Deactivate</button>
                                                 </form>
                                             <?php } ?>
-                                            <form method="POST" action="../processes/delete_category.php">
-                                                    <input type="hidden" name="categoryID" value="<?php echo $category['categoryID']; ?>">
-                                                    <button type="submit" class="text-white hover:text-white bg-red-500 rounded-md p-1">Delete</button>
-                                                </form>
+                                            <form method="POST" action="../processes/delete_category.php" onsubmit="return confirmDelete()">
+                                                <input type="hidden" name="categoryID" value="<?php echo $category['categoryID']; ?>">
+                                                <button type="submit" class="text-white hover:text-white bg-red-500 rounded-md p-1">Delete</button>
+                                            </form>
                                         </td>
                                     </tr>
                                 <?php } ?>
