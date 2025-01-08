@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CarGo | Blog</title>
+    <title>AUtoHaven | Blog</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50">
@@ -44,7 +44,6 @@
         </div>
     </nav>
 
-    <!-- Blog Header Section -->
     <div class="bg-white shadow-sm pt-10">
         <div class="max-w-7xl mx-auto px-4 py-8">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between">
@@ -65,10 +64,8 @@
         </div>
     </div>
 
-    <!-- Blog Content Section -->
     <div class="max-w-7xl mx-auto px-4 py-8">
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            <!-- Sidebar -->
             <div class="lg:col-span-1">
                 <div class="bg-white rounded-lg shadow p-6 mb-6">
                     <h3 class="font-bold text-lg mb-4">Categories</h3>
@@ -84,8 +81,9 @@
                 <div class="bg-white rounded-lg shadow p-6">
                     <h3 class="font-bold text-lg mb-4">My Favorites</h3>
                     <div class="space-y-4">
-                        <!-- Favorite posts will be populated by PHP -->
-                        <div class="flex items-start space-x-3">
+                                
+                        <!-- favorites section --> 
+                    <div class="flex items-start space-x-3">
                             <img src="../img/6778713872a63-image.webp" alt="Blog thumbnail" class="w-16 h-16 rounded object-cover">
                             <div>
                                 <h4 class="font-medium text-sm">Top 10 Electric Cars in 2024</h4>
@@ -96,12 +94,11 @@
                 </div>
             </div>
 
-            <!-- Main Content -->
             <div class="lg:col-span-3">
-                <!-- Blog Posts Grid -->
-                <div class="grid gap-8">
-                    <!-- Single Blog Post -->
-                    <article class="bg-white rounded-lg shadow">
+
+            <div class="grid gap-8">
+
+            <article class="bg-white rounded-lg shadow">
                         <img src="../img/67787201c7472-image.webp" alt="Blog header" class="w-full h-64 object-cover rounded-t-lg">
                         <div class="p-6">
                             <div class="flex items-center space-x-4 mb-4">
@@ -127,7 +124,6 @@
                                 </button>
                             </div>
 
-                            <!-- Comments Section -->
                             <div class="mt-6 pt-6 border-t">
                                 <h3 class="font-bold mb-4">Comments (3)</h3>
                                 <div class="space-y-4">
@@ -146,7 +142,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Comment Form -->
                                 <form class="mt-6">
                                     <textarea rows="3" placeholder="Write a comment..." 
                                               class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"></textarea>
@@ -158,10 +153,8 @@
                         </div>
                     </article>
 
-                    <!-- More blog posts will be populated by PHP -->
                 </div>
 
-                <!-- Pagination -->
                 <div class="mt-8 flex justify-center">
                     <nav class="flex space-x-2">
                         <button class="px-4 py-2 border rounded-lg hover:bg-gray-50">Previous</button>

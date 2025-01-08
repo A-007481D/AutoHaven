@@ -6,7 +6,9 @@
             "email": "labidabdelmalek@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+      "ext-pdo": "*"
+    },
     "autoload": {
         "psr-4": {
             "Autohaven\\": "classes/"

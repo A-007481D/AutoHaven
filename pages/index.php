@@ -28,7 +28,7 @@ error_reporting(E_ALL);
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="../pages/index.php" class="text-gray-700 font-bold  hover:text-blue-600 transition-colors">Home</a>
                     <a href="../pages/fleet.php" class="text-gray-700 font-bold  hover:text-blue-600 transition-colors">Our Fleet</a>
-                    <a href="#" class="text-gray-700 font-bold  hover:text-blue-600 transition-colors">About</a>
+                    <a href="../pages/blog.php" class="text-gray-700 font-bold  hover:text-blue-600 transition-colors">Blog</a>
                     <?php 
                     if (isset($_SESSION['name'])) {
 

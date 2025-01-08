@@ -9,9 +9,8 @@ require_once '../classes/Category.class.php';
 require_once '../classes/Vehicle.class.php';
 
 $db = new Database();
-$dbcon = $db->getConnection();
-$vehicle = new Vehicle($dbcon);
-$category = new Category($dbcon);
+$vehicle = new Vehicle($db->getConnection());
+$category = new Category($db->getConnection());
 $allVehicles = $vehicle->getAllVehicles();
 $allActiveCategories = $category->getAllActiveCategories();
 
@@ -53,7 +52,7 @@ $paginatedVehicles = $vehicle->getActiveVehicles($vehiclesPerPage, $offset);
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="../pages/index.php" class="text-gray-700 font-bold  hover:text-blue-600 transition-colors">Home</a>
                     <a href="../pages/fleet.php" class="text-gray-700 font-bold  hover:text-blue-600 transition-colors">Our Fleet</a>
-                    <a href="#" class="text-gray-700 font-bold  hover:text-blue-600 transition-colors">About</a>
+                    <a href="../pages/testpage.php" class="text-gray-700 font-bold  hover:text-blue-600 transition-colors">Blog</a>
                     <?php 
                     if (isset($_SESSION['name'])) {
 
