@@ -26,6 +26,26 @@
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
        }
 
+        public function getTagsBy($articleID) : array
+        {
+            try {
+                $sql = "
+            SELECT t.tagID, t.tag_name 
+            FROM article_tag at
+            JOIN tags t ON at.tagID = t.tagID
+            WHERE at.articleID = :articleID
+        ";
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindParam(':articleID', $articleID, PDO::PARAM_INT);
+                $stmt->execute();
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } catch (PDOException $e) {
+                throw new Exception("Error fetching tags: " . $e->getMessage());
+            }
+        }
+
+
+
 
 
 

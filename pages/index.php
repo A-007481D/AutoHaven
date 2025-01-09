@@ -28,7 +28,7 @@ error_reporting(E_ALL);
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="../pages/index.php" class="text-gray-700 font-bold  hover:text-blue-600 transition-colors">Home</a>
                     <a href="../pages/fleet.php" class="text-gray-700 font-bold  hover:text-blue-600 transition-colors">Our Fleet</a>
-                    <a href="../pages/blog.php" class="text-gray-700 font-bold  hover:text-blue-600 transition-colors">Blog</a>
+                    <a href="view_article.php" class="text-gray-700 font-bold  hover:text-blue-600 transition-colors">Blog</a>
                     <?php 
                     if (isset($_SESSION['name'])) {
 
@@ -38,8 +38,8 @@ error_reporting(E_ALL);
                             Welcome, 
                             <?php echo $_SESSION['name']; ?>
                     </div> 
-                    <button class="text-blue-500 font-bold bg-transparent px-4 py-2 border-solid border-2 border-blue-500 hover:text-white rounded-full hover:bg-blue-700 transition-all transform hover:scale-105 duration-200">
-                            <a href="../Auth/logout.php" class="">Logout</a>
+                    <button class="text-red-500 font-bold bg-transparent px-4 py-2 border-solid border-2 border-red-500 hover:text-white rounded-full hover:bg-red-700 transition-all transform hover:scale-105 duration-200">
+                            <a href="../Auth/logout.php">Logout</a>
                         </button>
                     <?php } else {
 

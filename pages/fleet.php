@@ -62,8 +62,8 @@ $paginatedVehicles = $vehicle->getActiveVehicles($vehiclesPerPage, $offset);
                             Welcome, 
                             <?php echo $_SESSION['name']; ?>
                     </div> 
-                    <button class="text-blue-500 font-bold bg-transparent px-4 py-2 border-solid border-2 border-blue-500 hover:text-white rounded-full hover:bg-blue-700 transition-all transform hover:scale-105 duration-200">
-                            <a href="../Auth/logout.php" class="">Logout</a>
+                    <button class="text-red-500 font-bold bg-transparent px-4 py-2 border-solid border-2 border-red-500 hover:text-white rounded-full hover:bg-red-700 transition-all transform hover:scale-105 duration-200">
+                            <a href="../Auth/logout.php">Logout</a>
                         </button>
                     <?php } else {
 

@@ -52,10 +52,10 @@ $tags = $tag->getAllTags();
             <div class="hidden md:flex items-center space-x-8">
                 <a href="../pages/index.php" class="text-gray-700 font-bold hover:text-blue-600">Home</a>
                 <a href="../pages/fleet.php" class="text-gray-700 font-bold hover:text-blue-600">Our Fleet</a>
-                <a href="../pages/blog.php" class="text-gray-700 font-bold hover:text-blue-600">Blog</a>
+                <a href="view_article.php" class="text-gray-700 font-bold hover:text-blue-600">Blog</a>
                 <?php if (isset($_SESSION['name'])): ?>
                     <div class="text-blue-500 font-bold">Welcome, <?= htmlspecialchars($_SESSION['name']) ?></div>
-                    <a href="../Auth/logout.php" class="text-blue-500 font-bold border-2 border-blue-500 px-4 py-2 rounded-full hover:bg-blue-700 hover:text-white transition">Logout</a>
+                    <a href="../Auth/logout.php" class="text-red-500 font-bold border-2 border-red-500 px-4 py-2 rounded-full hover:bg-red-700 hover:text-white transition">Logout</a>
                 <?php else: ?>
                     <a href="../pages/login.php" class="text-blue-500 font-bold border-2 border-blue-500 px-4 py-2 rounded-full hover:bg-blue-700 hover:text-white transition">Sign In</a>
                 <?php endif; ?>
@@ -101,7 +101,7 @@ $tags = $tag->getAllTags();
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <?php foreach ($paginatedArticles as $article): ?>
-            <article class="bg-white rounded-lg shadow overflow-hidden">
+            <article class="bg-white rounded-lg shadow overflow-hidden cursor-pointer">
                 <img src="<?= htmlspecialchars($article['image'] ?? '../img/1.jpg') ?>"
                      alt="<?= htmlspecialchars($article['title'] ?? 'No Title') ?>"
                      class="w-full h-40 object-cover">
@@ -109,7 +109,7 @@ $tags = $tag->getAllTags();
                     <h3 class="text-lg font-bold text-gray-800"><?= htmlspecialchars($article['title']) ?></h3>
                     <p class="text-gray-600 mt-2"><?= htmlspecialchars(substr($article['content'], 0, 100)) ?>...</p>
                     <div class="mt-4 flex justify-between items-center">
-                        <a href="#" class="text-blue-600 hover:underline">Read More</a>
+                        <a href="view_article.php?articleID=<?= $article['articleID'] ?>" class="text-blue-600 hover:underline">Read More</a>
                     </div>
                 </div>
             </article>
