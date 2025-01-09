@@ -142,9 +142,9 @@ $comments = $comment->getCommentsBy($articleID);
                         } ?>
                     </div>
 
-                    <form class="mt-6">
+                    <form method="POST" action="../processes/clientProcesses/add_comment.php" class="mt-6">
                         <textarea rows="3" placeholder="Write a comment..." class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"></textarea>
-                        <button class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Post Comment</button>
+                        <button type="submit" class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Post Comment</button>
                     </form>
                 </div>
             </div>
