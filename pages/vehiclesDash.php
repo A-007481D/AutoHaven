@@ -58,6 +58,9 @@ $allCategories = $category->getAllCategories();
                     <a href="../pages/reviewsDash.php" class="flex items-center px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">
                         <span class="mr-3">💬</span> Reviews
                     </a>
+                    <a href="../pages/blogDash.php" class="flex items-center px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">
+                        <span class="mr-3">📝</span> Blogs
+                    </a>
                 </div>
             </nav>
             <div class="absolute bottom-0 w-64 p-4 border-t border-gray-200">
@@ -117,7 +120,7 @@ $allCategories = $category->getAllCategories();
                                         <td class="p-4"><?php echo $vehicle['doors']; ?></td>
                                         <td class="p-4"><?php echo $vehicle['features']; ?></td>
                                         <td class="p-4"><?php echo $vehicle['availability']; ?></td>
-                                        <td class="p-4 space-x-2">
+                                        <td class="flex p-4 space-x-2">
                                             <button type="button" onclick="editVehicle(<?php echo $vehicle['vehicleID'] ?>)" class="px-2 py-1 bg-blue-500 text-white rounded-lg text-sm">Edit</button>
                                             <?php if ($vehicle['availability'] === 'INACTIVE') { ?>
                                                 <form method="POST" action="../processes/edit_vehicle.php">

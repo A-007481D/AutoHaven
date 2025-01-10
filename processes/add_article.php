@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 require_once '../classes/Database.class.php';
 require_once '../classes/Article.class.php';
 
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'client') {
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'client' && $_SESSION['role'] !== 'admin') {
     header("Location: ../pages/login.php");
     exit;
 }

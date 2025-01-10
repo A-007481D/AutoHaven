@@ -102,7 +102,7 @@ $tags = $tag->getAllTags();
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <?php foreach ($paginatedArticles as $article): ?>
             <article class="bg-white rounded-lg shadow overflow-hidden cursor-pointer">
-                <img src="<?= htmlspecialchars($article['image'] ?? '../img/1.jpg') ?>"
+                <img src="../img/<?= htmlspecialchars($article['images'] ?? '../img/1.jpg') ?>"
                      alt="<?= htmlspecialchars($article['title'] ?? 'No Title') ?>"
                      class="w-full h-40 object-cover">
                 <div class="p-4">

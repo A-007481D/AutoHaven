@@ -72,6 +72,9 @@ $categories = $category->getAllCategories();
                         <span class="mr-3">💬</span>
                         Reviews
                     </a>
+                    <a href="../pages/blogDash.php" class="flex items-center px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">
+                        <span class="mr-3">📝</span> Blogs
+                    </a>
                 </div>
             </nav>
 

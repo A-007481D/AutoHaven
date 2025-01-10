@@ -4,10 +4,14 @@ require_once '../classes/Database.class.php';
 
 class Article
 {
-
+    private string $title;
+    private string $content;
+    private string $images;
+    private int $themeID;
+    private int $userID;
     private PDO $db;
 
-    public function __construct($dbConnection)
+    public function __construct($title, $content, $images, $dbConnection, $themeID, $userID)
     {
         $this->db = $dbConnection;
     }

@@ -37,6 +37,7 @@ if (!$articleData) {
     exit;
 }
 
+
 $author = $article->getAuthorBy($articleID);
 $tags = $tag->getTagsBy($articleID);
 $comments = $comment->getCommentsBy($articleID);
@@ -98,7 +99,7 @@ $comments = $comment->getCommentsBy($articleID);
 
     <div class="max-w-7xl mx-auto px-4 py-8">
         <article class="bg-white rounded-lg shadow mb-8">
-            <img src="<?php echo htmlspecialchars($articleData['images'] ?? '../img/placeholder.jpg' ); ?>" alt="Blog header" class="w-full h-64 object-cover rounded-t-lg">
+            <img src="../img/<?php echo htmlspecialchars($articleData['images'] ??   '../img/placeholder.jpg' ); ?>" alt="Blog header" class="w-full h-64 object-cover rounded-t-lg">
             <div class="p-6">
                 <div class="flex items-center space-x-4 mb-4">
                     <img src="../img/677941e5d787b-bmw-s.jpeg" alt="<?php echo htmlspecialchars($articleData['first_name'] ?? 'Anonymous'); ?>" class="w-10 h-10 rounded-full">
@@ -143,8 +144,10 @@ $comments = $comment->getCommentsBy($articleID);
                     </div>
 
                     <form method="POST" action="../processes/clientProcesses/add_comment.php" class="mt-6">
-                        <textarea rows="3" placeholder="Write a comment..." class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"></textarea>
-                        <button type="submit" class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Post Comment</button>
+                        <textarea name="comment" rows="3" placeholder="Write a comment..." class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"></textarea>
+                        <input type="hidden" name="articleID" value="<?= $articleData["articleID"] ?>">
+
+                        <button name="addComment" type="submit" class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Post Comment</button>
                     </form>
                 </div>
             </div>

@@ -180,7 +180,7 @@ $paginatedVehicles = $vehicle->getActiveVehicles($vehiclesPerPage, $offset);
                     <div class="group rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
                         onclick="showCarDetails(<?php echo $vehicle['vehicleID']; ?>)">
                         <div class="relative">
-                            <img src="<?php echo htmlspecialchars($vehicle['image']); ?>" alt="<?php echo htmlspecialchars($vehicle['model']); ?>"
+                            <img src="../img/<?php echo htmlspecialchars($vehicle['image']); ?>" alt="<?php echo htmlspecialchars($vehicle['model']); ?>"
                                 class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300" />
                             <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
                                 <span class="text-blue-600 font-semibold">$<?php echo htmlspecialchars($vehicle['price']); ?>/day</span>
@@ -210,9 +210,10 @@ $paginatedVehicles = $vehicle->getActiveVehicles($vehiclesPerPage, $offset);
                             <button onclick="closeModal(<?php echo $vehicle['vehicleID']; ?>)" class="text-gray-500 hover:text-gray-700">
                                 ✖
                             </button>
+                            <img src="../img/<?php echo htmlspecialchars($vehicle['image']); ?>">
 
-                            <img src="<?php echo htmlspecialchars($vehicle['image']); ?>"
-                                alt="<?php echo htmlspecialchars($vehicle['model']); ?>" class="w-full h-64 object-cover rounded-lg mb-6">
+
+
                             <h2 class="text-2xl font-bold mb-4"><?php echo htmlspecialchars($vehicle['brand'] . ' ' . $vehicle['model']); ?></h2>
                             <p class="text-gray-600 mb-4"><?php echo htmlspecialchars($vehicle['description']); ?></p>
                             <ul class="text-sm text-gray-500 space-y-2">
